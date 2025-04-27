@@ -194,7 +194,7 @@ function finpreguntas() {
         <h1 class="titulofin">¡Los resultados!</h1>
         <div class='subtitulofin'>Has conseguido <b>${puntuacion}</b> puntos. ¡Felicidades!</div>
         <div class='subtitulofin'>La puntuacion media total es de <b>${Math.round(media)}</b> puntos.</div>
-        <div class='subtitulofin comentario'></div>        
+        <div class='subtitulofin' id='comentario'></div>        
         <div class="barra fondo"></div>
         <div class="barra usuario"></div>
         <div class="barra media"></div>
@@ -202,6 +202,11 @@ function finpreguntas() {
         <div class="indicadorusuario"> Tú → </div>
         <div class="indicadormedia"> Media → </div>
         `
+        if (puntuacion>media) {
+            document.getElementById('comentario').innerHTML=`¡Eso son ${puntuacion-Math.round(media)} puntos más que la media total!`
+        } else {
+            document.getElementById('comentario').innerHTML=`¡Eso son ${Math.round(media)-puntuacion} puntos menos que la media total!`
+        }
         animate(".usuario",{
             height: `${70*(puntuacion/100)}dvh`,
             duration: 1500,
@@ -225,6 +230,8 @@ function finpreguntas() {
             delay: 1500,
             duration: 1000,
             ease: "out(3)"});
+        
+
 
       } else {
         console.log("One or both data paths do not exist.");

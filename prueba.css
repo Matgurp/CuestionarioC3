@@ -1,5 +1,6 @@
 
 body {
+    user-select: none;
     cursor: none;
     height: 100dvh;
     overflow: hidden;
@@ -11,7 +12,7 @@ body {
     position: absolute;
     top: 5px;
     left: 5px;
-    height: 70px;
+    height: 8dvb;
     cursor: none;
     border-radius: 100%;
 }
@@ -21,11 +22,11 @@ body {
 
 #mouse {
     display: inline-block;
-    width: 3em;
-    height: 3em;
+    width: 6dvb;
+    height: 6dvb;
     position: absolute;
-    top: -3em;
-    left: -3em;
+    top: -6dvb;
+    left: -6dvb;
     pointer-events: none;
 }
 #svgmouse {
@@ -36,17 +37,17 @@ body {
 .titulo {
     justify-self: center;
     padding: 5dvh;
-    font-size: 4em;
+    font-size: 8dvb;
 }
 .subtitulo {
     justify-self: center;
     padding: 1dvh;
-    font-size: 2em;
+    font-size: 5dvb;
 }
 #btnempezar {
     justify-self: center;
     padding: 3dvh;
-    font-size: 4em;
+    font-size: 7dvb;
     font-weight: 600;
     background-image: radial-gradient(rgb(200, 206, 114),rgb(188, 248, 48));
     border-radius: 15px;
@@ -62,8 +63,10 @@ body {
 
 .pregunta {
     justify-self: center;
-    padding: 1dvh;
-    font-size: 4em;
+    text-align: center;
+    padding-block: 3dvh;
+    padding-inline: 4dvw;
+    font-size: 6dvb;
     opacity: 0;
     color: white;
 }
@@ -72,10 +75,9 @@ body {
     justify-self: center;
     margin-block: 2dvh;
     padding: 1dvh;
-    border-radius: 7pxl;
-    font-size: 2em;
+    border-radius: 7px;
+    font-size: 3dvb;
     opacity: 0;
-    user-select: none;
     border-radius: 10px;
     /*cursor: pointer;*/
     color: white;
@@ -93,7 +95,7 @@ body {
     justify-self: center;
     margin-top: 5dvh;
     padding: 2dvh;
-    font-size: 2em;
+    font-size: 3dvb;
     font-weight: 500;
     background-color: rgb(219, 219, 219);
     border: 5px solid black;

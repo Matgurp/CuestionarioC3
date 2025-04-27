@@ -6,11 +6,10 @@ const animatableSquare = createAnimatable('#mouse', {
   ease: 'out(3)',
 });
 
-let bounds = mouse.getBoundingClientRect();
-console.log(bounds)
 
 const onMouseMove = e => {
-  const x = e.clientX + bounds.width/1.3
+  let bounds = mouse.getBoundingClientRect();
+  const x = e.clientX + bounds.width/1.1
   const y = e.clientY + bounds.height/1.1
   animatableSquare.x(x); // Animate the x value in 500ms
   animatableSquare.y(y); // Animate the y value in 500ms
