@@ -99,8 +99,16 @@ btnempezar.addEventListener("mouseup",function(){
         delay: 300,
         duration: 1000,
     })
+    animate('.floresizq',{
+        translateX: "-40px",
+        duration: 1000,
+    })
+    animate('.floresdcha',{
+        translateX: "40px",
+        duration: 1000,
+    })
     animate('body',{
-        'background-color': "#1d1d1d",
+        'background-color': "rgb(21, 92, 65)",
         delay: 300,
         duration: 1000,
         onComplete: cambiarpregunta
@@ -193,7 +201,7 @@ function finpreguntas() {
         `
         <h1 class="titulofin">¡Los resultados!</h1>
         <div class='subtitulofin'>Has conseguido <b>${puntuacion}</b> puntos. ¡Felicidades!</div>
-        <div class='subtitulofin'>La puntuacion media total es de <b>${Math.round(media)}</b> puntos.</div>
+        <div class='subtitulofin'>La puntuación media total es de <b>${Math.round(media)}</b> puntos.</div>
         <div class='subtitulofin' id='comentario'></div>        
         <div class="barra fondo"></div>
         <div class="barra usuario"></div>
@@ -340,6 +348,7 @@ function finpreguntas() {
         'background-color': "#ffffff",
         duration: 1000, 
     })
+
 
 
     menu.innerHTML= 
