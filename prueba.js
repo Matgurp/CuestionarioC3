@@ -20,22 +20,25 @@ let menu = document.getElementById('menu');
 let titulo = document.getElementsByClassName("titulo");
 let subtitulo = document.getElementsByClassName("subtitulo");
 let btnempezar = document.getElementById("btnempezar");
+let txtpuntos = document.getElementById("txtpuntos");
+
+let bounds = null
 
 let i = 0;
 let puntuacion = 0;
 let relegida = 0;
 let A = []
 const listapreguntas = [
-    '1.	¿Cuánta agua crees que se ahorra al cerrar el grifo mientras te cepillas los dientes?',
-    '2.	¿Cómo te desplazas habitualmente a distancias cortas?',
-    '3.	¿Qué haces con las bolsas de plástico del supermercado?',
-    '4. ¿Con qué frecuencia compras ropa nueva?',
-    '5. ¿Cuántas horas al día utilizas el móvil?',
-    '6.	¿Te sueles interesar por el origen de los alimentos que compras?',
-    '7.	¿Qué haces con los aparatos electrónicos que ya no usas (como móviles, cargadores, etc.)?',
-    '8. ¿Cuántas veces a la semana comes productos ultra procesados (refrescos, comida rápida…)?',
-    '9. ¿Cómo eliges la temperatura del agua cuando te duchas?',
-    '10. ¿Qué tipo de alimentación sigues con más frecuencia?',
+    '¿Cuánta agua crees que se ahorra al cerrar el grifo mientras te cepillas los dientes?',
+    '¿Cómo te desplazas habitualmente a distancias cortas?',
+    '¿Qué haces con las bolsas de plástico del supermercado?',
+    '¿Con qué frecuencia compras ropa nueva?',
+    '¿Cuántas horas al día utilizas el móvil?',
+    '¿Te sueles interesar por el origen de los alimentos que compras?',
+    '¿Qué haces con los aparatos electrónicos que ya no usas (como móviles, cargadores, etc.)?',
+    '¿Cuántas veces a la semana comes productos ultra procesados (refrescos, comida rápida…)?',
+    '¿Cómo eliges la temperatura del agua cuando te duchas?',
+    '¿Qué tipo de alimentación sigues con más frecuencia?',
 ];
 const listarespuestas = [
     ['1-2 litros','4-6 litros','10-12 litros','No se ahorra nada'],
@@ -100,11 +103,11 @@ btnempezar.addEventListener("mouseup",function(){
         duration: 1000,
     })
     animate('.floresizq',{
-        translateX: "-40px",
+        translateX: "-2dvw",
         duration: 1000,
     })
     animate('.floresdcha',{
-        translateX: "40px",
+        translateX: "3dvw",
         duration: 1000,
     })
     animate('body',{
@@ -124,10 +127,12 @@ function cambiarpregunta() {
 
     menu.innerHTML= 
     `<h1 class="pregunta">${listapreguntas[i]}</h1>
+    <div class="respuestas-container">
     <div class='respuesta uno'>${listarespuestas[i][0]}</div>
     <div class='respuesta dos'>${listarespuestas[i][1]}</div>
     <div class='respuesta tres'>${listarespuestas[i][2]}</div>
     <div class='respuesta cuatro'>${listarespuestas[i][3]}</div>
+    </div>
     <div class='botonsiguientepregunta'>Siguiente pregunta...</div>`;
 
     let b1 = document.querySelector('.uno')
@@ -345,7 +350,7 @@ function finpreguntas() {
         duration: 1000,
     })
     animate('body',{
-        'background-color': "#ffffff",
+        'background-color': "#d9e7eb",
         duration: 1000, 
     })
 
@@ -362,32 +367,40 @@ function querespuestahasidoelegida (e) {
     if(element.classList.contains('respuesta')) {
         if(element.classList.contains('uno')){
             relegida = 1;
-            document.querySelector('.uno').style.border = "2px solid white";
-            document.querySelector('.dos').style.border = "2px solid rgba(0, 0, 0, 0)";
-            document.querySelector('.tres').style.border = "2px solid rgba(0, 0, 0, 0)";
-            document.querySelector('.cuatro').style.border = "2px solid rgba(0, 0, 0, 0)";
+            document.querySelector('.uno').style.borderColor = "white";
+            document.querySelector('.dos').style.borderColor = "#42a36bff";
+            document.querySelector('.tres').style.borderColor = "#42a36bff";
+            document.querySelector('.cuatro').style.borderColor = "#42a36bff";
+
+            bounds = document.querySelector('.uno').getBoundingClientRect();
 
         }
         if(element.classList.contains('dos')){
             relegida = 2;
-            document.querySelector('.uno').style.border = "2px solid rgba(0, 0, 0, 0)";
-            document.querySelector('.dos').style.border = "2px solid white";
-            document.querySelector('.tres').style.border = "2px solid rgba(0, 0, 0, 0)";
-            document.querySelector('.cuatro').style.border = "2px solid rgba(0, 0, 0, 0)";
+            document.querySelector('.uno').style.borderColor = "#42a36bff";
+            document.querySelector('.dos').style.borderColor = "white";
+            document.querySelector('.tres').style.borderColor = "#42a36bff";
+            document.querySelector('.cuatro').style.borderColor = "#42a36bff";
+
+            bounds = document.querySelector('.dos').getBoundingClientRect();
         }
         if(element.classList.contains('tres')){
             relegida = 3;
-            document.querySelector('.uno').style.border = "2px solid rgba(0, 0, 0, 0)";
-            document.querySelector('.dos').style.border = "2px solid rgba(0, 0, 0, 0)";
-            document.querySelector('.tres').style.border = "2px solid white";
-            document.querySelector('.cuatro').style.border = "2px solid rgba(0, 0, 0, 0)"
+            document.querySelector('.uno').style.borderColor = "#42a36bff";
+            document.querySelector('.dos').style.borderColor = "#42a36bff";
+            document.querySelector('.tres').style.borderColor = "white";
+            document.querySelector('.cuatro').style.borderColor = "#42a36bff"
+
+            bounds = document.querySelector('.tres').getBoundingClientRect();
         }
         if(element.classList.contains('cuatro')){
             relegida = 4;
-            document.querySelector('.uno').style.border = "2px solid rgba(0, 0, 0, 0)";
-            document.querySelector('.dos').style.border = "2px solid rgba(0, 0, 0, 0)";
-            document.querySelector('.tres').style.border = "2px solid rgba(0, 0, 0, 0)";
-            document.querySelector('.cuatro').style.border = "2px solid white"
+            document.querySelector('.uno').style.borderColor = "#42a36bff";
+            document.querySelector('.dos').style.borderColor = "#42a36bff";
+            document.querySelector('.tres').style.borderColor = "#42a36bff";
+            document.querySelector('.cuatro').style.borderColor = "white";
+
+            bounds = document.querySelector('.cuatro').getBoundingClientRect();
         }
     }
 };
@@ -399,6 +412,20 @@ function pulsasiguientepregunta(e) {
     if(element.classList.contains("botonsiguientepregunta")){
         console.log(relegida)
         if (relegida != 0) {
+            
+
+
+            txtpuntos.innerHTML = `+${valores[i][relegida-1]}`
+            txtpuntos.style.top = bounds.top + (bounds.height/2) + "px"
+            txtpuntos.style.left = bounds.left + (bounds.width/2) + "px"
+
+            animate(txtpuntos,{
+                scale: [1, 1.5],
+                opacity: [100, 0],
+                duration: 1000,
+                ease: "out(3)",
+            })
+
             puntuacion += valores[i][relegida-1]
             A.push(relegida)
             relegida = 0
@@ -419,28 +446,3 @@ function pulsasiguientepregunta(e) {
 document.addEventListener('click',pulsasiguientepregunta);
 
 
-
-
-/*
-var ref = firebase.database().ref("Respuestas"); // Reemplaza "tu_ruta" con la ubicación de tus datos
-ref.orderByKey().limitToLast(1).get().then((snapshot) => {
-  snapshot.forEach((childSnapshot) => {
-    // Aquí puedes acceder a los datos del último elemento
-    var ultimoElemento = childSnapshot.val();
-    console.log("Último elemento:", ultimoElemento);
-  });
-}).catch((error) => {
-  console.error("Error al obtener el último elemento:", error);
-});*/
-
-get(ref(database, `Respuestas/100/count`))
-    .then((snapshot) => {
-        if (snapshot.exists()) {
-        console.log(`Personas: ${snapshot.val()}`);
-        } else {
-        console.log("No data available");
-        }
-    })
-    .catch((error) => {
-        console.error(error);
-    });
